@@ -1,12 +1,12 @@
 function __cache_or_get_rake_completion -d "Create rake completions"
-  mkdir -p "/tmp/rake_completion_cache_for_$USER"
+  mkdir -p "/tmp/rake_cache_$USER"
   set -l hashed_pwd (md5pwd)
-  set -l rake_cache_file "/tmp/rake_completion_cache_for_$USER/$hashed_pwd"
+  set -l cache_file "/tmp/rake_cache_$USER/$hashed_pwd"
 
-  if not test -f "$rake_cache_file"
-    rake -T 2>&1 | sed -e "s/^rake \([a-z:_0-9!\-]*\).*#\(.*\)/\1\t\2/" > "$rake_cache_file"
+  if not test -f "$cache_file"
+    rake -T 2>&1 | sed -e "s/^rake \([a-z:_0-9!\-]*\).*#\(.*\)/\1\t\2/" > "$cache_file"
   end
-  cat "$rake_cache_file"
+  cat "$cache_file"
 end
 
 function __run_rake_completion
