@@ -1,6 +1,6 @@
 # Fish addon
 
-Rake completion
+Rake completion from version 13.0.6
 
 # Installation
 
